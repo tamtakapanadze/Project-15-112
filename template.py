@@ -3,7 +3,7 @@ import random
 from settings import*
 from sprites import*
 
-#SO far I'm using Chris Bradfield's "doodle jump" game starting template
+
 
 class Game:
         def __init__(self):
@@ -165,3 +165,4 @@ while g.gameIsON:
 	g.the_gameOver_screen()
 
 pg.quit()
+# I'm using Chris Bradfield's  game starting template
