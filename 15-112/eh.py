@@ -96,7 +96,7 @@ big_coin_list3=[(1023,200)]
 #level 1 lists
 platform_list = [(350,250),(480,300),(660,250),(920,350),(1025,400)]
 coin_list=[(350,175),(500,275),(685,220),(923,320)]
-ropestation_list=[(753,120)]
+ropestation_list=[(853,120)]
 big_coin_list=[(1050,300)]
 
 #level 4 lists
@@ -331,207 +331,202 @@ class Game:
 
         def new(self):
             #find out on which level are we, create the objects the level owns
-            if self.level==1:
-                self.screen.fill(red)
-                #once you dye restart window
-                #creating groups of sprites to detect collisions
-                self.all_sprites=pygame.sprite.Group()
-                #platform group
-                self.platforms=pygame.sprite.Group()
-                #ropestations group
-                self.ropestations=pygame.sprite.Group()
-                #coins group
-                self.coins=pygame.sprite.Group()
-                #Mainoin group
-                self.Mcoins=pygame.sprite.Group()
-                #spike group
-                self.spikes=pygame.sprite.Group()
-                #ropestation-gem group
-                self.gem=pygame.sprite.Group()
-                #the player
-                self.player=Player(self) 
-                self.all_sprites.add(self.player)
-                #creating platforms, adding to platforms and all_sprites groups
-                for plat in platform_list:
-                    p = Platform(*plat)
-                    self.all_sprites.add(p)
-                    self.platforms.add(p)
-                #creating coins, adding to coins and all_sprites groups
-                for coin in coin_list:
-                    c = coins(*coin)
-                    self.all_sprites.add(c)
-                    self.coins.add(c)
-                #creating ropestations, adding to ropestations and all_sprites groups
-                for rope in ropestation_list:
-                    r = Ropestations(*rope)
-                    self.rope_stations += [r]
-                    self.all_sprites.add(r)
-                    self.platforms.add(r)
-                #main coin
-                for Mcoin in big_coin_list:
-                        m=Maincoin(*Mcoin)
-                        self.all_sprites.add(m)
-                        self.coins.add(m)
-                        self.Mcoins.add(m)
-                #ropes
-                for gem in ropestation_list:
-                        g=Gems(gem[0]-3,gem[1]-3)
-                        self.gem.add(g)
-                        self.all_sprites.add(g)
-                self.gameON()
+            #once you dye restart window
+            #creating groups of sprites to detect collisions
+            self.all_sprites=pygame.sprite.Group()
+            #platform group
+            self.platforms=pygame.sprite.Group()
+            #ropestations group
+            self.ropestations=pygame.sprite.Group()
+            #coins group
+            self.coins=pygame.sprite.Group()
+            #Mainoin group
+            self.Mcoins=pygame.sprite.Group()
+            #spike group
+            self.spikes=pygame.sprite.Group()
+            #ropestation-gem group
+            self.gem=pygame.sprite.Group()
+            #the player
+            self.player=Player(self) 
+            self.all_sprites.add(self.player)
+            #creating platforms, adding to platforms and all_sprites groups
+            for plat in platform_list:
+                p = Platform(*plat)
+                self.all_sprites.add(p)
+                self.platforms.add(p)
+            #creating coins, adding to coins and all_sprites groups
+            for coin in coin_list:
+                c = coins(*coin)
+                self.all_sprites.add(c)
+                self.coins.add(c)
+            #creating ropestations, adding to ropestations and all_sprites groups
+            for rope in ropestation_list:
+                r = Ropestations(*rope)
+                self.rope_stations += [r]
+                self.all_sprites.add(r)
+                self.platforms.add(r)
+            #main coin
+            for Mcoin in big_coin_list:
+                    m=Maincoin(*Mcoin)
+                    self.all_sprites.add(m)
+                    #self.coins.add(m)
+                    self.Mcoins.add(m)
+            #ropes
+            for gem in ropestation_list:
+                    g=Gems(gem[0]-3,gem[1]-3)
+                    self.gem.add(g)
+                    self.all_sprites.add(g)
+            self.gameON()
+
+        def drawLevel2(self):
+            #once you dye restart window
+            #creating groups of sprites to detect collisions
+            self.all_sprites=pygame.sprite.Group()
+            #platform group
+            self.platforms=pygame.sprite.Group()
+            #ropestations group
+            self.ropestations=pygame.sprite.Group()
+            #coins group
+            self.coins=pygame.sprite.Group()
+            #Mainoin group
+            self.Mcoins=pygame.sprite.Group()
+            #spike group
+            self.spikes=pygame.sprite.Group()
+            #ropestation-gem group
+            self.gem=pygame.sprite.Group()
+            #the player
+            self.player=Player(self) 
+            self.all_sprites.add(self.player)
+            #creating platforms, adding to platforms and all_sprites groups
+            for plat in platform_list2:
+                p = Platform(*plat)
+                self.all_sprites.add(p)
+                self.platforms.add(p)
+            #creating coins, adding to coins and all_sprites groups
+            for coin in coin_list2:
+                c = coins(*coin)
+                self.all_sprites.add(c)
+                self.coins.add(c)
+            #creating ropestations, adding to ropestations and all_sprites groups
+            for rope in ropestation_list2:
+                r = Ropestations(*rope)
+                self.rope_stations += [r]
+                self.all_sprites.add(r)
+                self.platforms.add(r)
+            #main coin
+            for Mcoin in big_coin_list2:
+                    m=Maincoin(*Mcoin)
+                    self.Mcoins.add(m)
+                    #self.coins.add(m)
+                    self.all_sprites.add(m)
+  
+            for spike in spike_list2:
+                    s=Spikes(*spike)
+                    self.all_sprites.add(s)
+                    self.spikes.add(s)
+            for gem in ropestation_list2:
+                    g=Gems(gem[0]-3,gem[1]-3)
+                    self.gem.add(g)
+                    self.all_sprites.add(g)
+            self.gameON()                
                 
-            elif self.level==2:
-                self.screen.fill(green)
-                #once you dye restart window
-                #creating groups of sprites to detect collisions
-                self.all_sprites=pygame.sprite.Group()
-                #platform group
-                self.platforms=pygame.sprite.Group()
-                #ropestations group
-                self.ropestations=pygame.sprite.Group()
-                #coins group
-                self.coins=pygame.sprite.Group()
-                #Mainoin group
-                self.Mcoins=pygame.sprite.Group()
-                #spike group
-                self.spikes=pygame.sprite.Group()
-                #ropestation-gem group
-                self.gem=pygame.sprite.Group()
-                #the player
-                self.player=Player(self) 
-                self.all_sprites.add(self.player)
-                #creating platforms, adding to platforms and all_sprites groups
-                for plat in platform_list2:
-                    p = Platform(*plat)
-                    self.all_sprites.add(p)
-                    self.platforms.add(p)
-                #creating coins, adding to coins and all_sprites groups
-                for coin in coin_list2:
-                    c = coins(*coin)
-                    self.all_sprites.add(c)
-                    self.coins.add(c)
-                #creating ropestations, adding to ropestations and all_sprites groups
-                for rope in ropestation_list2:
-                    r = Ropestations(*rope)
-                    self.rope_stations += [r]
-                    self.all_sprites.add(r)
-                    self.platforms.add(r)
-                #main coin
-                for Mcoin in big_coin_list2:
-                        m=Maincoin(*Mcoin)
-                        self.Mcoins.add(m)
-                        self.coins.add(m)
-                        self.all_sprites.add(m)
-      
-                for spike in spike_list2:
-                        s=Spikes(*spike)
-                        self.all_sprites.add(s)
-                        self.spikes.add(s)
-                for gem in ropestation_list2:
-                        g=Gems(gem[0]-3,gem[1]-3)
-                        self.gem.add(g)
-                        self.all_sprites.add(g)
-                self.gameON()                
+        def drawLevel3(self):
+            #once you dye restart window
+            #creating groups of sprites to detect collisions
+            self.all_sprites=pygame.sprite.Group()
+            #platform group
+            self.platforms=pygame.sprite.Group()
+            #ropestations group
+            self.ropestations=pygame.sprite.Group()
+            #coins group
+            self.coins=pygame.sprite.Group()
+            #Mainoin group
+            self.Mcoins=pygame.sprite.Group()
+            #spike group
+            self.spikes=pygame.sprite.Group()
+            #ropestation-gem group
+            self.gem=pygame.sprite.Group()
+            #the player
+            self.player=Player(self) 
+            self.all_sprites.add(self.player)
+            #creating platforms, adding to platforms and all_sprites groups
+            for plat in platform_list3:
+                p = Platform(*plat)
+                self.all_sprites.add(p)
+                self.platforms.add(p)
+            #creating coins, adding to coins and all_sprites groups
+            for coin in coin_list3:
+                c = coins(*coin)
+                self.all_sprites.add(c)
+                self.coins.add(c)
+            #creating ropestations, adding to ropestations and all_sprites groups
+            for rope in ropestation_list3:
+                r = Ropestations(*rope)
+                self.rope_stations += [r]
+                self.all_sprites.add(r)
+                self.platforms.add(r)
+            #main coin
+            for Mcoin in big_coin_list3:
+                    m=Maincoin(*Mcoin)
+                    self.all_sprites.add(m)
+                    #self.coins.add(m)
+                    self.Mcoins.add(m)
+            for gem in ropestation_list3:
+                    g=Gems(gem[0]-3,gem[1]-3)
+                    self.gem.add(g)
+                    self.all_sprites.add(g)
+            self.gameON()
                 
-            elif self.level==3:
-                self.screen.fill(black)
-                #once you dye restart window
-                #creating groups of sprites to detect collisions
-                self.all_sprites=pygame.sprite.Group()
-                #platform group
-                self.platforms=pygame.sprite.Group()
-                #ropestations group
-                self.ropestations=pygame.sprite.Group()
-                #coins group
-                self.coins=pygame.sprite.Group()
-                #Mainoin group
-                self.Mcoins=pygame.sprite.Group()
-                #spike group
-                self.spikes=pygame.sprite.Group()
-                #ropestation-gem group
-                self.gem=pygame.sprite.Group()
-                #the player
-                self.player=Player(self) 
-                self.all_sprites.add(self.player)
-                #creating platforms, adding to platforms and all_sprites groups
-                for plat in platform_list3:
-                    p = Platform(*plat)
-                    self.all_sprites.add(p)
-                    self.platforms.add(p)
-                #creating coins, adding to coins and all_sprites groups
-                for coin in coin_list3:
-                    c = coins(*coin)
-                    self.all_sprites.add(c)
-                    self.coins.add(c)
-                #creating ropestations, adding to ropestations and all_sprites groups
-                for rope in ropestation_list3:
-                    r = Ropestations(*rope)
-                    self.rope_stations += [r]
-                    self.all_sprites.add(r)
-                    self.platforms.add(r)
-                #main coin
-                for Mcoin in big_coin_list3:
-                        m=Maincoin(*Mcoin)
-                        self.all_sprites.add(m)
-                        self.coins.add(m)
-                        self.Mcoins.add(m)
-                for gem in ropestation_list3:
-                        g=Gems(gem[0]-3,gem[1]-3)
-                        self.gem.add(g)
-                        self.all_sprites.add(g)
-                self.gameON()
-                
-            elif self.level==4:
-                self.screen.fill(bluish)
-                #once you dye restart window
-                #creating groups of sprites to detect collisions
-                self.all_sprites=pygame.sprite.Group()
-                #platform group
-                self.platforms=pygame.sprite.Group()
-                #ropestations group
-                self.ropestations=pygame.sprite.Group()
-                #coins group
-                self.coins=pygame.sprite.Group()
-                #Mainoin group
-                self.Mcoins=pygame.sprite.Group()
-                #spike group
-                self.spikes=pygame.sprite.Group()
-                #ropestation-gem group
-                self.gem=pygame.sprite.Group()
-                #the player
-                self.player=Player(self) 
-                self.all_sprites.add(self.player)
-                #creating platforms, adding to platforms and all_sprites groups
-                for plat in platform_list4:
-                    p = Platform(*plat)
-                    self.all_sprites.add(p)
-                    self.platforms.add(p)
-                #creating coins, adding to coins and all_sprites groups
-                for coin in coin_list4:
-                    c = coins(*coin)
-                    self.all_sprites.add(c)
-                    self.coins.add(c)
-                #creating ropestations, adding to ropestations and all_sprites groups
-                for rope in ropestation_list4:
-                    r = Ropestations(*rope)
-                    self.rope_stations += [r]
-                    self.all_sprites.add(r)
-                    self.platforms.add(r)
-                #main coin
-                for Mcoin in big_coin_list4:
-                        m=Maincoin(*Mcoin)
-                        self.all_sprites.add(m)
-                        self.coins.add(m)
-                        self.Mcoins.add(m)
-                for spike in spike_list4:
-                        s=Spikes(*spike)
-                        self.all_sprites.add(s)
-                        self.spikes.add(s)
-                for gem in ropestation_list4:
-                        g=Gems(gem[0]-3,gem[1]-3)
-                        self.gem.add(g)
-                        self.all_sprites.add(g)
-                self.gameON()
+        def drawLevel4(self):
+            #once you dye restart window
+            #creating groups of sprites to detect collisions
+            self.all_sprites=pygame.sprite.Group()
+            #platform group
+            self.platforms=pygame.sprite.Group()
+            #ropestations group
+            self.ropestations=pygame.sprite.Group()
+            #coins group
+            self.coins=pygame.sprite.Group()
+            #Mainoin group
+            self.Mcoins=pygame.sprite.Group()
+            #spike group
+            self.spikes=pygame.sprite.Group()
+            #ropestation-gem group
+            self.gem=pygame.sprite.Group()
+            #the player
+            self.player=Player(self) 
+            self.all_sprites.add(self.player)
+            #creating platforms, adding to platforms and all_sprites groups
+            for plat in platform_list4:
+                p = Platform(*plat)
+                self.all_sprites.add(p)
+                self.platforms.add(p)
+            #creating coins, adding to coins and all_sprites groups
+            for coin in coin_list4:
+                c = coins(*coin)
+                self.all_sprites.add(c)
+                self.coins.add(c)
+            #creating ropestations, adding to ropestations and all_sprites groups
+            for rope in ropestation_list4:
+                r = Ropestations(*rope)
+                self.rope_stations += [r]
+                self.all_sprites.add(r)
+                self.platforms.add(r)
+            #main coin
+            for Mcoin in big_coin_list4:
+                    m=Maincoin(*Mcoin)
+                    self.all_sprites.add(m)
+                    #self.coins.add(m)
+                    self.Mcoins.add(m)
+            for spike in spike_list4:
+                    s=Spikes(*spike)
+                    self.all_sprites.add(s)
+                    self.spikes.add(s)
+            for gem in ropestation_list4:
+                    g=Gems(gem[0]-3,gem[1]-3)
+                    self.gem.add(g)
+                    self.all_sprites.add(g)
+            self.gameON()
             
         def gameON(self):
                 #game loop
@@ -541,81 +536,110 @@ class Game:
                         self.events()
                         self.update()
                         self.draw()
-
+#updaeing game loop
         def update(self):
-                #updaeing game loop
-                self.all_sprites.update()
-                #only falling, hitting a platform
-                if self.player.velocity.y>0:
-                    #detecting the collisions , not deleting the sprite
-                    #if we hit a platform we moe on top of it
-                        hits=pygame.sprite.spritecollide(self.player,self.platforms,False)
-                        if hits and not self.player.bool_swing:
-                                self.player.position.y=hits[0].rect.top
-                                self.player.velocity.y=0
-                #if we hit a coin we delete the sprite of the coin and increase the coin count, score
-                hitCoin=pygame.sprite.spritecollide(self.player,self.coins,True)
-                #print(hitCoin)
-                if hitCoin:
-                        self.score+=1
+            self.all_sprites.update()
+            #only falling, hitting a platform
+            if self.player.velocity.y>0:
+                #detecting the collisions , not deleting the sprite
+                #if we hit a platform we moe on top of it
+                    hits=pygame.sprite.spritecollide(self.player,self.platforms,False)
+                    if hits and not self.player.bool_swing:
+                            self.player.position.y=hits[0].rect.top
+                            self.player.velocity.y=0
+            #if we hit a coin we delete the sprite of the coin and increase the coin count, score
+            hitCoin=pygame.sprite.spritecollide(self.player,self.coins,True)
+            #print(hitCoin)
+            if hitCoin:
+                self.score+=1
+                if self.score>=4:
+                    self.next_level_screen()
+                    self.level+=1
+                    if self.level == 1:
+                        self.score=0
+                        self.drawLevel2()
+                        self.score=0
+                    if self.level == 2:
+                        self.score=0
+                        self.drawLevel3()
+                        self.score=0
+                    if self.level==3:
+                        self.score=0
+                        self.drawLevel4()
+                        self.score=0
+                        
 #uf we collected the MainCoin we are done with the level and gained 5 extra points
-                Maincoin=pygame.sprite.spritecollide(self.player,self.Mcoins,True)
+            Maincoin=pygame.sprite.spritecollide(self.player,self.Mcoins,False)
 ##                if Maincoin!=[]:
 ##                    print(Maincoin)
-                if Maincoin:
-                        self.score+=5
-                        #display the nect level screen
-                        self.next_level_screen()
-                        #move to the next level
-                        self.level+=1
+            if Maincoin:
+                    self.score+=5
+                    #display the nect level screen
+                    self.next_level_screen()
+                    #move to the next level
+                    self.score=0
+                    self.level+=1
+                    if self.level == 1:
+                        self.score=0                        
+                        self.drawLevel2()
+                        self.score=0
+
+                    if self.level == 2:
+                        self.score=0
+                        self.drawLevel3()
+                        self.score=0
+                    if self.level==3:
+                        self.score=0
+                        self.drawLevel4
+                        self.score=0
 #if we hit the spike we die
-                spikehit=pygame.sprite.spritecollide(self.player,self.spikes,False)
-                if spikehit:
-                    #game is over
-                         self.playing = False
-                         self.the_gameOver_screen()
-                        
+            spikehit=pygame.sprite.spritecollide(self.player,self.spikes,False)
+            if spikehit:
+                #game is over
+                     self.playing = False
+                     self.the_gameOver_screen()
+                    
 
                 #if player is past half  of the screen from the right scroll it in left direction
-                if self.player.rect.right >=abs(width/2):
-                        if self.player.velocity.x>0:
-                                #scrolling the ropestations
-                                self.player.position.x -= abs(self.player.velocity.x)
-                                for ropestation in self.ropestations:
-                                      ropestation.rect.x-=abs(self.player.velocity.x)
-                                #scrolling the coins
-                                for coin in self.coins:
-                                        coin.rect.x-=abs(self.player.velocity.x)
-                                #scrolling the platforms
-                                for plat in self.platforms:
-                                        plat.rect.x-=abs(self.player.velocity.x)
-                                for spike in self.spikes:
-                                        spike.rect.x-=abs(self.player.velocity.x)
-                                for gem in self.gem:
-                                        gem.rect.x-=abs(self.player.velocity.x)
+            if self.player.rect.right >=abs(width/2):
+                    if self.player.velocity.x>0:
+                            #scrolling the ropestations
+                            self.player.position.x -= abs(self.player.velocity.x)
+                            for ropestation in self.ropestations:
+                                  ropestation.rect.x-=abs(self.player.velocity.x)
+                            #scrolling the coins
+                            for coin in self.coins:
+                                    coin.rect.x-=abs(self.player.velocity.x)
+                            #scrolling the platforms
+                            for plat in self.platforms:
+                                    plat.rect.x-=abs(self.player.velocity.x)
+                            for spike in self.spikes:
+                                    spike.rect.x-=abs(self.player.velocity.x)
+                            for gem in self.gem:
+                                    gem.rect.x-=abs(self.player.velocity.x)
                                         
                 #if player is past half  of the screen from the left scroll it in right direction
-                if self.player.rect.left<abs(width/2):
-                        if self.player.velocity.x<0:
-                                self.player.position.x +=abs(self.player.velocity.x)
-                                #scrolling the platforms
-                                for plat in self.platforms:
-                                        plat.rect.x+=abs(self.player.velocity.x)
-                                #scrolling the coins
-                                for coin in self.coins:
-                                        coin.rect.x+=abs(self.player.velocity.x)
-                                #scrolling the ropestations
-                                for ropestation in self.ropestations:
-                                      ropestation.rect.x+=abs(self.player.velocity.x) 
-                                for spike in self.spikes:
-                                        spike.rect.x+=abs(self.player.velocity.x)                                
-                                for gem in self.gem:
-                                        gem.rect.x+=abs(self.player.velocity.x)
+            if self.player.rect.left<abs(width/2):
+                    if self.player.velocity.x<0:
+                            self.player.position.x +=abs(self.player.velocity.x)
+                            #scrolling the platforms
+                            for plat in self.platforms:
+                                    plat.rect.x+=abs(self.player.velocity.x)
+                            #scrolling the coins
+                            for coin in self.coins:
+                                    coin.rect.x+=abs(self.player.velocity.x)
+                            #scrolling the ropestations
+                            for ropestation in self.ropestations:
+                                  ropestation.rect.x+=abs(self.player.velocity.x) 
+                            for spike in self.spikes:
+                                    spike.rect.x+=abs(self.player.velocity.x)                                
+                            for gem in self.gem:
+                                    gem.rect.x+=abs(self.player.velocity.x)
                                         
-                if self.player.rect.bottom>height:
-                        #if cat dissapears from the screen the cat is dead
-                        self.playing = False
-                        self.the_gameOver_screen()
+            if self.player.rect.bottom>height:
+                    #if cat dissapears from the screen the cat is dead
+                    self.playing = False
+                    self.the_gameOver_screen()
 
         def events(self):
                 #events in the game loop
@@ -626,6 +650,7 @@ class Game:
                                         self.playing=False
                                 self.gameIsON=False
                                 pygame.quit()
+                                pygame.init()
 
                         if event.type==pygame.KEYDOWN:
                                 if event.key==pygame.K_UP:
@@ -721,6 +746,7 @@ class Game:
                                                 if x>=383 and x<=500:
                                                     if y>=247 and y<=289:
                                                         self.level=1
+                                                        self.score=0
                                                         self.new()
                                                         
 ##                                                if pygame.mouse.get_pos() >= (383,247):
@@ -732,7 +758,8 @@ class Game:
                                                 if x>=524 and x<=641:
                                                     if y>=248 and y<=289:
                                                         self.level=2
-                                                        self.new()
+                                                        self.score=0
+                                                        self.drawLevel2()
                                                         
 ##                                                if pygame.mouse.get_pos() >= (524,248):
 ##                                                        if pygame.mouse.get_pos() <= (641,289):
@@ -742,7 +769,8 @@ class Game:
                                                 if x>=384 and x<=498:
                                                     if y>=331 and y<=372:
                                                         self.level=3
-                                                        self.new()
+                                                        self.score=0
+                                                        self.drawLevel3()
                                                         
 ##                                                if pygame.mouse.get_pos() >= (384,331):
 ##                                                        if pygame.mouse.get_pos() <= (498,372):
@@ -752,14 +780,15 @@ class Game:
                                                 if x>=524 and x<=639:
                                                     if y>=329 and y<=373:
                                                         self.level=4
-                                                        self.new()
+                                                        self.score=0
+                                                        self.drawLevel4()
                                                         
 ##                                                if pygame.mouse.get_pos() >= (524,329):
 ##                                                        if pygame.mouse.get_pos() <= (639,373):
 ##                                                            self.level=4
 ##                                                            self.new()
                                                         
-                                                if x>=385 and x<=435:
+                                                if x>=495 and x<=535:
                                                     if y>=20 and y<=40:
                                                         self.playing=False
                                                         self.the_start_screen()                                                       
@@ -774,8 +803,8 @@ class Game:
         def next_level_screen(self):
             #if we won, we see the next level screen, showing our score and option to ether go back to menu or continue the game
                 self.screen.blit(nextlevel,(0,0))
-                btn=pygame.draw.rect(self.screen,(0,0,240),(385,20,50,20))
-                self.draw_text("Menu",18,white,415,20)
+                btn=pygame.draw.rect(self.screen,(0,0,240),(495,20,50,20))
+                self.draw_text("Menu",18,white,515,20)
                 self.draw_text("You won, Another level?",39,white,width/2,height/4-10)
                 self.draw_text("score:"+str(self.score),25,white,width/2,height*3/4)
                 self.draw_text("press S to continue",18,white,width/2,height*4/5)
@@ -787,8 +816,8 @@ class Game:
                         return
                 #the game over screen, giving us the score before we lost
                 self.screen.blit(gameOver,(0,0))
-                btn=pygame.draw.rect(self.screen,(255,255,255),(385,20,50,20))
-                self.draw_text("Menu",18,bluish,415,20)
+                btn=pygame.draw.rect(self.screen,(255,255,255),(495,20,50,20))
+                self.draw_text("Menu",18,bluish,515,20)
                 self.draw_text("Game over, Want to try again?",39,white,width/2,height/8)
                 self.draw_text("score:"+str(self.score),25,white,width/2,height/4-40)
                 self.draw_text("press S to restart",18,white,width/2,height*4/5)
